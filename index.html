@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Demosivu</title>
+	<link href="style.css" rel="stylesheet">
+	<script>
+		function mouseFromCenter() {
+			var x = event.clientX;     // Get the horizontal coordinate
+			var y = event.clientY;     // Get the vertical coordinate
+			var elemX = document.getElementById("mainHeader").style.left;
+			var elemY = document.getElementById("mainHeader").style.top;
+			var elemW = document.getElementById("mainHeader").style.width;
+			var elemH = document.getElementById("mainHeader").style.height;
+			var winX = window.innerWidth;
+			var winY = window.innerHeight;
+			
+			return [x-(winX/2)+elemX, y-elemY];
+		}
+		
+		function myFunction() {
+			var xy = mouseFromCenter();
+			x = xy[0];
+			y = xy[1];
+			shX = -x/20;
+			shY = -y/20;
+			document.getElementById("mainHeader").style.boxShadow = shX + "px " + shY + "px " + "3px " + "#444444";
+		}
+	</script>
+</head>
+
+<body onmousemove="myFunction()">
+	<div id="mainHeader">Tämä voisi olla sinun<br>KOTISIVUSI</div>
+	<div class="siteContainer">
+		<image src="kuva2.jpg" widht=600>
+		<br>
+		Voisitko sinä olla tässä kuvassa?
+	</div>
+</body>
+</html>

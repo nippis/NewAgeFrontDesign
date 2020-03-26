@@ -1,0 +1,24 @@
+body {
+	/*background-image: url("kuva.jpg");
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover;
+	background-color: #999999;
+}
+
+#mainHeader {
+	background-color: #f9fff9;
+	color: #fff5f5;
+	font-size: 8vh;
+	text-align: center;
+	width: 50%;
+	margin: 100 auto;
+}
+
+.siteContainer {
+	width: 40%;
+	margin: 20 auto;
+	background-color: white;
+	color: blue;
+	padding: 50px;
+}
