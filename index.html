@@ -3,33 +3,44 @@
 	<title>Demosivu</title>
 	<link href="style.css" rel="stylesheet">
 	<script>
-		function mouseFromCenter() {
-			var x = event.clientX;     // Get the horizontal coordinate
-			var y = event.clientY;     // Get the vertical coordinate
-			var elemX = document.getElementById("mainHeader").style.left;
-			var elemY = document.getElementById("mainHeader").style.top;
-			var elemW = document.getElementById("mainHeader").style.width;
-			var elemH = document.getElementById("mainHeader").style.height;
-			var winX = window.innerWidth;
-			var winY = window.innerHeight;
+		function mouseFromCenter(elemID) {
+			let x = event.clientX;
+			let y = event.clientY;
+			let element = document.getElementById(elemID);
+			let positionInfo = element.getBoundingClientRect();
+			let elemH = positionInfo.height;
+			let elemW = positionInfo.width;
+			let elemX = positionInfo.left;
+			let elemY = positionInfo.top;
+			let winX = window.innerWidth;
+			let winY = window.innerHeight;
 			
-			return [x-(winX/2)+elemX, y-elemY];
+			return [x-elemX-(elemW/2), y-elemY-(elemH/2)];
 		}
 		
+		function sh(elemID) {
+			let x, y;
+			[x, y] = mouseFromCenter(elemID);
+			x = (-x^1.5)/50;
+			y = (-y^1.5)/50;
+			return [x, y];
+		}
+		
+		const elements = ["mainHeader", "siteContainer"];
+		
 		function myFunction() {
-			var xy = mouseFromCenter();
-			x = xy[0];
-			y = xy[1];
-			shX = -x/100;
-			shY = -y/100;
-			document.getElementById("mainHeader").style.textShadow = shX + "px " + shY + "px " + "3px " + "#444444";
+			let elem;
+			for (elem in elements) {
+				let xy = sh(elements[elem]);
+				document.getElementById(elements[elem]).style.textShadow = xy[0] + "px " + xy[1] + "px " + "3px " + "#444444";
+			}
 		}
 	</script>
 </head>
 
 <body onmousemove="myFunction()">
 	<div id="mainHeader">Tämä voisi olla sinun<br>KOTISIVUSI</div>
-	<div class="siteContainer">
+	<div id="siteContainer">
 		<br>
 		Lorem iplsu dsnandanjoj msanj foiiasmdc
 	</div>
